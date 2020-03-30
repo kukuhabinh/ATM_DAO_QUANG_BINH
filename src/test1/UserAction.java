@@ -5,7 +5,7 @@ import java.util.Scanner;
 import test1.Constant;
 
 
-public class UserService {
+public class UserAction {
 
     public User getLoginUser (List<User> users) {
         User chooseUser = new User();
@@ -24,6 +24,7 @@ public class UserService {
         return null;
     }
     public void mainAction(User chooseUser,List<User> users) {
+
         boolean check = false;
         while (!check) {
             System.out.println("Moi ban chon hanh dong bang cach nhap so \n 1: rut tien \n 2:chuyen tien \n 3:xem so du ");

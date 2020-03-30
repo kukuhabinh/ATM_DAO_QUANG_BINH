@@ -13,9 +13,26 @@ public class Main {
         FileUtil fileUtil = new FileUtil();
 
         users = fileUtil.readFile();
-        UserService userService = new UserService();
-        chooseUser = userService.getLoginUser(users);
-        userService.mainAction(chooseUser,users);
+        UserAction userAction = new UserAction();
+        chooseUser = userAction.getLoginUser(users);
+        if (chooseUser.getRole().equals("admin")) {
+            System.out.println("Chon 1 de thuc hien admin, chon 2 de thuc hien hoat dong");
+            Scanner keyboard = new Scanner(System.in);
+            Integer chooseAction = keyboard.nextInt();
+            switch (chooseAction) {
+                case 1:
+                    AdminAction adminAction = new AdminAction();
+                    adminAction.mainAction();
+                    break;
+                case 2:
+                    userAction.mainAction(chooseUser,users);
+                    break;
+            }
+        }
+        else {
+            userAction.mainAction(chooseUser,users);
+        }
+
 //        fileUtil.writeFile();
     }
 }
